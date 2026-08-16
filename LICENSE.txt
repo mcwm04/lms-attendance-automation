@@ -1,0 +1,47 @@
+LMS ATTENDANCE AUTOMATION SYSTEM
+END-USER LICENSE AGREEMENT
+
+Copyright (c) 2026 Waqas Ahmad. All rights reserved.
+
+This software ("LMS Attendance Automation System") is provided for use
+by authorized faculty and staff for the purpose of automating
+attendance submission to the University of Agriculture Faisalabad's
+Learning Management System (lms.uaf.edu.pk).
+
+1. GRANT OF LICENSE
+   You are granted a personal, non-exclusive, non-transferable license
+   to install and use this software on devices you own or control,
+   solely for legitimate attendance-management purposes at the
+   institution for which it was developed.
+
+2. RESTRICTIONS
+   You may not redistribute, sublicense, sell, or reverse engineer
+   this software without prior written permission from the author.
+
+3. CREDENTIALS AND DATA
+   This software stores your LMS username and password locally, in
+   encrypted form, on the device on which it is installed, solely to
+   enable automated login. You are responsible for the security of the
+   device on which this software is installed.
+
+4. NO WARRANTY
+   This software is provided "AS IS", without warranty of any kind,
+   express or implied, including but not limited to warranties of
+   merchantability, fitness for a particular purpose, and
+   non-infringement. The author is not responsible for attendance
+   records submitted incorrectly due to misconfiguration, LMS changes,
+   or network issues. Always verify submitted attendance on the LMS
+   after running automation.
+
+5. LIMITATION OF LIABILITY
+   In no event shall the author be liable for any claim, damages, or
+   other liability arising from the use of this software.
+
+6. ACCEPTANCE
+   By clicking "I accept the agreement" during installation, you
+   confirm that you have read and agree to the terms above.
+
+--------------------------------------------------------------------
+Replace this file with your own license text before building the
+installer if you'd like different terms.
+--------------------------------------------------------------------

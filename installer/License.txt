@@ -1,0 +1,19 @@
+===============================================================
+LMS Attendance Automation
+Version 8.0.0
+
+Copyright © 2026 Waqas Ahmad
+
+This software is provided for educational and institutional use.
+
+Unauthorized copying, modification, redistribution, reverse
+engineering, or commercial resale of this software without
+written permission from the author is prohibited.
+
+This software is provided "AS IS", without warranty of any kind.
+The author shall not be liable for any damages arising from
+the use of this software.
+
+By installing this software, you agree to these terms.
+
+===============================================================

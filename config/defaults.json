@@ -1,0 +1,22 @@
+{
+  "_config_version": 2,
+  "logging": {
+    "folder": "Logs",
+    "level": "INFO"
+  },
+  "browser": {
+    "headless": true,
+    "window_maximized": true,
+    "timeout": 30
+  },
+  "lms": {
+    "url": "https://lms.uaf.edu.pk"
+  },
+  "ui": {
+    "theme": "soft"
+  },
+  "application": {
+    "name": "LMS Attendance Automation System",
+    "version": "8.1.0"
+  }
+}

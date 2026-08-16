@@ -1,0 +1,3411 @@
+/* ==========================================================
+   LMS Attendance Automation System
+   Enterprise Theme v2.1
+   Foundation + Layout
+   ========================================================== */
+
+/* ==========================================================
+   IMPORTS
+   ========================================================== */
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap");
+
+
+/* ==========================================================
+   DESIGN TOKENS
+   ========================================================== */
+
+:root {
+
+    /* ------------------------------------------------------
+       Spacing Scale (8px System)
+       ------------------------------------------------------ */
+
+    --space-0: 0;
+    --space-1: 4px;
+    --space-2: 8px;
+    --space-3: 12px;
+    --space-4: 16px;
+    --space-5: 20px;
+    --space-6: 24px;
+    --space-7: 32px;
+    --space-8: 40px;
+    --space-9: 48px;
+    --space-10: 64px;
+
+    /* ------------------------------------------------------
+       Layout
+       ------------------------------------------------------ */
+
+    --container-padding: var(--space-5);
+
+    --section-gap: var(--space-5);
+
+    --card-padding: var(--space-5);
+
+    --sidebar-width: 340px;
+
+    --sidebar-gap: var(--space-5);
+
+    --header-height: 100px;
+
+    --content-max-width: 100%;
+
+    /* ------------------------------------------------------
+       Radius
+       ------------------------------------------------------ */
+
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-xl: 20px;
+    --radius-pill: 9999px;
+
+    /* ------------------------------------------------------
+       Typography
+       ------------------------------------------------------ */
+
+    --font-family:
+        "Inter",
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+    --font-xs:12px;
+    --font-sm:13px;
+    --font-md:14px;
+    --font-lg:16px;
+    --font-xl:18px;
+    --font-2xl:26px;
+
+    --font-light:300;
+    --font-normal:400;
+    --font-medium:500;
+    --font-semibold:600;
+    --font-bold:700;
+    --font-black:800;
+
+    /* ------------------------------------------------------
+       Colors
+       ------------------------------------------------------ */
+
+    --primary:#059669;
+    --primary-dark:#047857;
+    --primary-50:#ecfdf5;
+    --primary-700:#047857;
+
+    --secondary:#0ea5e9;
+
+    --success:#10b981;
+
+    --danger:#ef4444;
+
+    --warning:#f59e0b;
+
+    --page-bg:
+        linear-gradient(
+            135deg,
+            #f0f9ff 0%,
+            #f0fdf4 50%,
+            #faf5ff 100%
+        );
+
+    --surface:#f8fafc;
+
+    --surface-hover:#f0fdf4;
+
+    --surface-dark:#0f172a;
+
+    --card-bg:#ffffff;
+
+    --border:#e2e8f0;
+
+    --border-light:#f1f5f9;
+
+    --text-primary:#1e293b;
+
+    --text-secondary:#64748b;
+
+    --text-muted:#94a3b8;
+
+    /* ------------------------------------------------------
+       Shadows
+       ------------------------------------------------------ */
+
+    --shadow-sm:
+        0 1px 3px rgba(0,0,0,.08);
+
+    --shadow-md:
+        0 10px 25px rgba(0,0,0,.10);
+
+    --shadow-lg:
+        0 20px 40px rgba(0,0,0,.15);
+
+    /* ------------------------------------------------------
+       Component Sizes
+       ------------------------------------------------------ */
+
+    --input-padding-y:12px;
+
+    --input-padding-x:16px;
+
+    --button-padding-y:12px;
+
+    --button-padding-x:28px;
+
+    --upload-padding:32px;
+
+    --table-cell-padding-y:12px;
+
+    --table-cell-padding-x:16px;
+
+    --table-header-padding-y:14px;
+
+    --table-header-padding-x:16px;
+
+    --icon-size:40px;
+
+    /* ------------------------------------------------------
+       Motion
+       ------------------------------------------------------ */
+
+    --transition-fast:.20s ease;
+
+    --transition-normal:.30s ease;
+
+}
+
+
+/* ==========================================================
+   RESET
+   ========================================================== */
+
+*,
+*::before,
+*::after{
+
+    box-sizing:border-box;
+
+}
+
+html{
+
+    scroll-behavior:smooth;
+
+}
+
+html,
+body{
+
+    margin:0;
+
+    padding:0;
+
+}
+
+body{
+
+    font-family:var(--font-family);
+
+    color:var(--text-primary);
+
+    background:var(--page-bg);
+
+}
+
+img{
+
+    display:block;
+
+    max-width:100%;
+
+}
+
+button,
+input,
+select,
+textarea{
+
+    font:inherit;
+
+}
+
+textarea{
+
+    resize:vertical;
+
+}
+
+a{
+
+    text-decoration:none;
+
+    color:inherit;
+
+}
+
+
+/* ==========================================================
+   UTILITIES
+   ========================================================== */
+
+.flex{
+
+    display:flex;
+
+}
+
+.flex-center{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+.flex-between{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+}
+
+.flex-column{
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+.text-center{
+
+    text-align:center;
+
+}
+
+.hidden{
+
+    display:none;
+
+}
+
+.w-100{
+
+    width:100%;
+
+}
+
+.mt-0{margin-top:0;}
+.mt-1{margin-top:var(--space-1);}
+.mt-2{margin-top:var(--space-2);}
+.mt-3{margin-top:var(--space-3);}
+.mt-4{margin-top:var(--space-4);}
+.mt-5{margin-top:var(--space-5);}
+
+.mb-0{margin-bottom:0;}
+.mb-1{margin-bottom:var(--space-1);}
+.mb-2{margin-bottom:var(--space-2);}
+.mb-3{margin-bottom:var(--space-3);}
+.mb-4{margin-bottom:var(--space-4);}
+.mb-5{margin-bottom:var(--space-5);}
+
+/* ==========================================================
+   APPLICATION LAYOUT
+   ========================================================== */
+
+.gradio-container{
+
+    width:100%;
+
+    max-width:none;
+
+    min-height:100vh;
+
+    margin:0;
+
+    padding:
+        var(--space-5)
+        var(--space-6);
+
+    background:var(--page-bg);
+
+    box-sizing:border-box;
+
+}
+
+.gradio-container > .contain{
+
+    width:100%;
+
+    max-width:none;
+
+}
+
+.gradio-container *{
+
+    font-family:var(--font-family);
+
+}
+
+
+
+/* ==========================================================
+   DASHBOARD LAYOUT
+   ========================================================== */
+
+.dashboard-layout{
+
+    width:100%;
+
+    display:flex !important;
+
+    flex-direction:row !important;
+
+    align-items:stretch !important;
+
+    gap:var(--space-5);
+
+    margin:0;
+
+    padding:0;
+
+    box-sizing:border-box;
+
+}
+
+
+/* ==========================================================
+   MAIN DASHBOARD WORKSPACE
+   ========================================================== */
+
+.dashboard-main {
+
+    min-width: 0;
+
+    width: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: var(--space-5);
+
+    flex: 3 1 0%;
+}
+
+
+/* ==========================================================
+   DASHBOARD SIDEBAR
+   ========================================================== */
+
+.dashboard-sidebar{
+
+    min-width:300px;
+
+    width:100%;
+
+    display:flex;
+
+    flex-direction:column;
+
+    flex:1 1 0%;
+
+}
+
+
+/* ==========================================================
+   LIVE EXECUTION MONITOR
+   ========================================================== */
+
+.sticky-logs {
+    position: sticky !important;
+    top: var(--space-5);
+    height: calc(100vh - 2 * var(--space-5));
+    max-height: calc(100vh - 2 * var(--space-5));
+    display: flex !important;
+    flex-direction: column;
+    min-height: 0;
+}
+
+
+/*
+   The monitor card itself must consume the
+   available sidebar height.
+*/
+
+.dashboard-sidebar .sticky-logs{
+
+    width:100%;
+
+    box-sizing:border-box;
+
+}
+
+
+/* ==========================================================
+   MONITOR HEADER
+   ========================================================== */
+
+.dashboard-sidebar .sticky-logs > .section-header{
+
+    flex:0 0 auto;
+
+}
+
+
+/* ==========================================================
+   MONITOR BODY
+   ========================================================== */
+
+.dashboard-sidebar .sticky-logs .section-body{
+
+    flex:1 1 auto;
+
+    min-height:0;
+
+    display:flex;
+
+    flex-direction:column;
+
+    overflow:visible;
+
+}
+
+
+
+/* ==========================================================
+   LOG PANEL
+   (single definition — previously duplicated further down
+   the file with a conflicting min-height; consolidated here)
+   ========================================================== */
+
+.logs-panel{
+
+    display:flex;
+
+    flex-direction:column;
+
+    flex:1 1 auto;
+
+    min-height:0;
+
+    width:100%;
+
+}
+
+.logs-panel textarea{
+
+    flex:1 1 auto;
+
+    min-height:0;
+
+    width:100%;
+
+    height:100%;
+
+    padding:var(--card-padding);
+
+    overflow-y:auto;
+
+    overflow-x:auto;
+
+    border:none;
+
+    background:transparent;
+
+    color:var(--text-primary);
+
+    font-family:
+        "JetBrains Mono",
+        "Consolas",
+        monospace;
+
+    font-size:13px;
+
+    line-height:1.55;
+
+}
+
+.logs-panel textarea:focus{
+
+    outline:none;
+
+}
+
+
+/* ==========================================================
+   LOG SCROLLBAR
+   ========================================================== */
+
+.logs-panel textarea::-webkit-scrollbar{
+
+    width:6px;
+
+    height:6px;
+
+}
+
+.logs-panel textarea::-webkit-scrollbar-track{
+
+    background:var(--surface);
+
+}
+
+.logs-panel textarea::-webkit-scrollbar-thumb{
+
+    background:#94a3b8;
+
+    border-radius:var(--radius-pill);
+
+}
+
+.logs-panel textarea::-webkit-scrollbar-thumb:hover{
+
+    background:#64748b;
+
+}
+.logs-panel,
+.logs-panel > label,
+.logs-panel .wrap,
+.logs-panel > div {
+    flex: 1 1 auto;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.logs-panel textarea {
+    height: 100% !important;
+    min-height: 0 !important;
+}
+
+
+.gradio-container {
+    overflow: visible !important;
+    overflow-x: visible !important;
+    overflow-y: visible !important;
+}
+/* ==========================================================
+   DASHBOARD RESPONSIVE BEHAVIOR
+   ========================================================== */
+
+/* Medium screens */
+
+@media (max-width:1100px){
+
+    .dashboard-layout{
+
+        gap:var(--space-4);
+
+    }
+
+    .dashboard-sidebar{
+
+        min-width:280px;
+
+    }
+
+}
+
+
+/* Tablet / narrow desktop */
+
+@media (max-width:900px){
+
+    .dashboard-layout{
+
+        flex-direction:column !important;
+
+    }
+
+    .dashboard-main{
+
+        width:100%;
+
+    }
+
+    .dashboard-sidebar{
+
+        width:100%;
+
+        min-width:0;
+
+    }
+
+    .sticky-logs{
+
+        position:relative;
+
+        top:auto;
+
+        height:500px;
+
+        max-height:none;
+
+    }
+
+}
+
+
+/* Small screens */
+
+@media (max-width:600px){
+
+    .gradio-container{
+
+        padding:
+            var(--space-3)
+            var(--space-3);
+
+    }
+
+    .dashboard-layout{
+
+        gap:var(--space-3);
+
+    }
+
+    .dashboard-main{
+
+        gap:var(--space-3);
+
+    }
+
+    .sticky-logs{
+
+        height:420px;
+
+    }
+
+}
+
+/* ==========================================================
+   HEADER
+   ========================================================== */
+
+.app-header{
+
+    position:relative;
+
+    overflow:hidden;
+
+
+    padding:var(--space-6) var(--space-7);
+
+    border-radius:var(--radius-lg);
+
+    background:
+        linear-gradient(
+            135deg,
+            #0f172a 0%,
+            #1e293b 100%
+        );
+
+    box-shadow:var(--shadow-lg);
+
+}
+
+/* Decorative top strip */
+
+.app-header::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0 0 auto 0;
+
+    height:4px;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--primary),
+            var(--secondary),
+            #8b5cf6
+        );
+
+}
+
+
+/* ==========================================================
+   HEADER LAYOUT
+   ========================================================== */
+
+.header-content{
+
+    position:relative;
+
+    z-index:1;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    flex-wrap:wrap;
+
+    gap:var(--space-4);
+
+}
+
+.header-brand{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:var(--space-4);
+
+}
+
+
+
+/* ==========================================================
+   HEADER LOGO
+   ========================================================== */
+
+.header-logo{
+
+    width:72px;
+
+    height:72px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    flex-shrink:0;
+
+    padding: 6px;
+
+    border-radius: var(--radius-md);
+
+    background: rgba(255,255,255,.95);
+
+    border: 1px solid rgba(255,255,255,.18);
+
+    box-shadow:
+        0 8px 18px rgba(0,0,0,.25);
+
+    overflow: hidden;
+
+}
+
+.header-logo img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: contain;
+
+    border-radius: calc(var(--radius-md) - 4px);
+
+}
+
+
+/* ==========================================================
+   HEADER TYPOGRAPHY
+   ========================================================== */
+
+.header-title{
+
+    color:white;
+
+    font-size:var(--font-xl);
+
+    font-weight:var(--font-bold);
+
+    line-height:1.2;
+
+    letter-spacing:-.02em;
+
+}
+
+.header-subtitle{
+
+    margin-top:2px;
+
+    color:var(--text-muted);
+
+    font-size:var(--font-xs);
+
+    font-weight:var(--font-medium);
+
+}
+
+
+
+
+/* ==========================================================
+   HEADER BADGE
+   ========================================================== */
+
+.header-badge{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:var(--space-2);
+
+    padding:
+        var(--space-2)
+        var(--space-4);
+
+    border-radius:var(--radius-pill);
+
+    background:
+        rgba(255,255,255,.10);
+
+    backdrop-filter:blur(12px);
+
+    border:
+        1px solid
+        rgba(255,255,255,.15);
+
+    color:white;
+
+    font-size:var(--font-sm);
+
+    font-weight:var(--font-semibold);
+
+}
+
+.header-badge span{
+
+    color:white;
+
+}
+
+/* ==========================================================
+   HEADER — CONVERTED TO GRADIO ROW
+   (header-content is now a real gr.Row, not raw HTML, so the
+   Sign Out / Exit buttons can sit next to the System Ready
+   badge. Same Gradio-wrapper-spacing problem as .section-card,
+   same fix: flatten every wrapper div Gradio inserts.)
+   ========================================================== */
+
+.app-header,
+.app-header.block {
+
+    padding: var(--space-6) var(--space-7) !important;
+    margin: 0 !important;
+    border: none !important;
+    border-radius: var(--radius-lg) !important;
+    background:
+        linear-gradient(135deg, #0f172a 0%, #1e293b 100%) !important;
+    box-shadow: var(--shadow-lg) !important;
+}
+
+.header-content,
+.header-content.block {
+
+    position: relative;
+    z-index: 1;
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.header-brand-wrap,
+.header-right,
+.header-brand-wrap.block,
+.header-center-wrap.block,
+.header-right.block {
+
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+
+
+.header-right {
+
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch;
+    gap: var(--space-2);
+    width: auto !important;
+    min-width: 130px;
+    flex: 0 0 auto !important;
+}
+
+.header-right .header-badge {
+
+    justify-content: center;
+}
+
+.header-right .header-btn {
+
+    justify-content: center;
+    width: 100% !important;
+}
+
+/* Flatten any extra div Gradio nests between the Row and our
+   content, same trick used for .section-card. */
+.header-content *:not(.header-brand):not(.header-center):not(.header-badge):not(.header-btn):not(.status-dot) {
+
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* ==========================================================
+   HEADER BUTTONS (Sign Out / Exit)
+   ========================================================== */
+
+.header-btn {
+
+    width: auto !important;
+    min-width: 0 !important;
+    padding: 9px 18px !important;
+    border-radius: var(--radius-pill) !important;
+    font-size: var(--font-sm) !important;
+    font-weight: var(--font-semibold) !important;
+    backdrop-filter: blur(12px);
+    transition:
+        background var(--transition-fast),
+        border-color var(--transition-fast),
+        color var(--transition-fast);
+}
+
+.header-btn-neutral {
+
+    background: rgba(255,255,255,.10) !important;
+    color: white !important;
+    border: 1px solid rgba(255,255,255,.18) !important;
+}
+
+.header-btn-neutral:hover {
+
+    background: rgba(255,255,255,.18) !important;
+}
+
+.header-btn-danger {
+
+    background: rgba(239,68,68,.16) !important;
+    color: #fecaca !important;
+    border: 1px solid rgba(239,68,68,.35) !important;
+}
+
+.header-btn-danger:hover {
+
+    background: rgba(239,68,68,.30) !important;
+    color: white !important;
+}
+
+@media (max-width: 992px) {
+
+    .header-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .header-right {
+        align-items: center;
+        width: 100% !important;
+    }
+
+    .header-right .header-btn,
+    .header-right .header-badge {
+        width: 100% !important;
+        max-width: 240px;
+    }
+}
+
+/* ==========================================================
+   EXIT CONFIRMATION BAR
+   ========================================================== */
+
+.exit-confirm-panel {
+
+    display: flex !important;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4);
+    margin-top: var(--space-4);
+    padding: var(--space-4) var(--space-5);
+    border-radius: var(--radius-md);
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+}
+
+.exit-confirm-text {
+    color: #991b1b;
+    font-weight: 600;
+    font-size: var(--font-sm);
+}
+
+
+
+/* ==========================================================
+   STATUS INDICATOR
+   ========================================================== */
+
+.status-dot{
+
+    width:8px;
+
+    height:8px;
+
+    border-radius:50%;
+
+    background:var(--success);
+
+    box-shadow:
+        0 0 12px
+        var(--success);
+
+    animation:
+        statusPulse
+        2s infinite;
+
+}
+
+@keyframes statusPulse{
+
+    0%{
+
+        opacity:1;
+
+        transform:scale(1);
+
+    }
+
+    50%{
+
+        opacity:.55;
+
+        transform:scale(.90);
+
+    }
+
+    100%{
+
+        opacity:1;
+
+        transform:scale(1);
+
+    }
+
+}
+
+
+/* ==========================================================
+   SECTION CARDS
+   ========================================================== */
+
+.section-card {
+
+    position: relative;
+
+    display: flex;
+
+    flex-direction: column;
+
+    width: 100%;
+
+    margin: 0;
+
+    padding: 0 !important;
+
+    gap: 0 !important;
+
+    overflow: hidden;
+
+    box-sizing: border-box;
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius-lg);
+
+    background: var(--card-bg);
+
+    box-shadow:
+        0 2px 8px
+        rgba(15, 23, 42, 0.05);
+}
+/* ==========================================================
+   SECTION CARD - REMOVE GRADIO HTML WRAPPER SPACING
+   ========================================================== */
+
+/*
+   section_card()
+       └── gr.HTML()
+             └── .section-header
+
+   Gradio adds its own block spacing around gr.HTML.
+   Remove that spacing so the custom header can sit
+   flush against the card edges.
+*/
+
+.section-card > .gr-html,
+.section-card > .gr-block.gr-html,
+.section-card > div:has(.section-header),
+.section-card > *:first-child {
+
+    width: 100% !important;
+
+    max-width: none !important;
+
+    margin: 0 !important;
+
+    padding: 0 !important;
+
+    border: 0 !important;
+
+    border-radius: 0 !important;
+
+    box-shadow: none !important;
+
+    background: transparent !important;
+
+    gap: 0 !important;
+
+}
+
+/*
+   Gradio can nest an arbitrary number of wrapper divs between
+   the Group and the gr.HTML content (form/styler/block layers
+   vary by version). Rather than guess the depth, reset EVERY
+   ancestor div that contains .section-header, at any depth,
+   using :has(). This is what actually closes the remaining gap.
+*/
+
+.section-card *:has(.section-header):not(.section-header) {
+
+    width: 100% !important;
+
+    max-width: none !important;
+
+    margin: 0 !important;
+
+    padding: 0 !important;
+
+    border: 0 !important;
+
+    border-radius: 0 !important;
+
+    box-shadow: none !important;
+
+    background: transparent !important;
+
+    gap: 0 !important;
+
+}
+
+/*
+   The header now sits flush against the card, so give it its
+   own top corners explicitly (matching the card's own radius)
+   instead of relying on a wrapper that no longer has any.
+   overflow:hidden on .section-card still clips this if it runs
+   slightly long, but this makes the intent explicit.
+*/
+
+.section-header {
+
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+
+}
+
+/* Remove Gradio Group's internal spacing */
+
+.section-card.gr-group {
+
+    padding: 0 !important;
+
+    gap: 0 !important;
+
+}
+
+.section-card:hover {
+
+    border-color: #d1d5db;
+
+    box-shadow:
+        0 5px 16px rgba(15, 23, 42, 0.08);
+
+}
+
+
+/* ==========================================================
+   CARD HEADER
+   ========================================================== */
+
+.section-header {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 20px;
+
+    width: 100%;
+
+    min-height: 92px;
+
+    margin: 0 !important;
+
+    padding: 20px 24px;
+
+    box-sizing: border-box;
+
+    background:
+        linear-gradient(
+            135deg,
+            #effaf5 0%,
+            #f4fbf7 55%,
+            #edf8f3 100%
+        );
+
+    border: 0;
+
+    border-bottom:
+        1px solid
+        #dcefe6;
+
+}
+
+
+
+/* ==========================================================
+   CARD ICON
+   ========================================================== */
+
+.section-icon {
+
+    width: 56px;
+
+    height: 56px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex: 0 0 56px;
+
+    margin: 0;
+
+    border-radius: 14px;
+
+    background:
+        rgba(255, 255, 255, 0.75);
+
+    color:
+        var(--primary);
+
+    font-size: 25px;
+
+    line-height: 1;
+
+    box-shadow:
+        0 3px 10px
+        rgba(5, 150, 105, 0.08);
+
+    border:
+        1px solid
+        rgba(5, 150, 105, 0.08);
+
+}
+/* ==========================================================
+   SECTION HEADING
+   ========================================================== */
+.section-heading {
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    min-width: 0;
+
+    gap: 4px;
+
+}
+
+
+
+/* ==========================================================
+   CARD TITLE
+   ========================================================== */
+
+.section-title {
+
+    margin: 0;
+
+    color:
+        var(--primary-dark);
+
+    font-size:
+        19px;
+
+    font-weight:
+        700;
+
+    line-height:
+        1.3;
+
+    letter-spacing:
+        -0.015em;
+
+}
+
+
+/* ==========================================================
+   SECTION DESCRIPTION
+   ========================================================== */
+
+.section-description {
+
+    margin: 0;
+
+    color:
+        var(--text-secondary);
+
+    font-size:
+        14px;
+
+    font-weight:
+        400;
+
+    line-height:
+        1.5;
+
+}
+
+
+
+/* ==========================================================
+   CARD BODY
+   ========================================================== */
+
+.section-body {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap:
+        var(--space-4);
+
+    width: 100%;
+
+    margin: 0;
+
+    padding:
+        24px;
+
+    box-sizing: border-box;
+
+    background:
+        var(--card-bg);
+
+}
+
+
+/* ==========================================================
+   COMMON TEXT / STATUS COLORS
+   (single definition — previously duplicated under a second
+   "FINAL UTILITIES" block; consolidated here)
+   ========================================================== */
+
+.text-primary{
+
+    color:var(--text-primary);
+
+}
+
+.text-secondary{
+
+    color:var(--text-secondary);
+
+}
+
+.text-muted{
+
+    color:var(--text-muted);
+
+}
+
+.text-success{
+
+    color:var(--success);
+
+    font-weight:var(--font-semibold);
+
+}
+
+.text-warning{
+
+    color:var(--warning);
+
+    font-weight:var(--font-semibold);
+
+}
+
+.text-danger{
+
+    color:var(--danger);
+
+    font-weight:var(--font-semibold);
+
+}
+
+
+/* ==========================================================
+   DIVIDERS
+   ========================================================== */
+
+.divider{
+
+    width:100%;
+
+    height:1px;
+
+    margin:var(--space-5) 0;
+
+    background:var(--border-light);
+
+}
+
+/* ==========================================================
+   FORM CONTROLS
+   ========================================================== */
+
+/* Common input styling */
+
+.pro-input,
+.pro-dropdown,
+.pro-textarea{
+
+    border:1px solid var(--border);
+
+    border-radius:var(--radius-md);
+
+    background:white;
+
+    transition:
+        border-color var(--transition-fast),
+        box-shadow var(--transition-fast),
+        background var(--transition-fast);
+
+}
+
+.pro-input:hover,
+.pro-dropdown:hover,
+.pro-textarea:hover{
+
+    border-color:#cbd5e1;
+
+}
+
+.pro-input:focus-within,
+.pro-dropdown:focus-within,
+.pro-textarea:focus-within{
+
+    border-color:var(--primary);
+
+    box-shadow:
+        0 0 0 3px
+        rgba(5,150,105,.15);
+
+}
+
+/* Labels */
+
+.pro-input label,
+.pro-dropdown label,
+.pro-textarea label{
+
+    font-size:var(--font-sm);
+
+    font-weight:var(--font-semibold);
+
+    color:var(--text-primary);
+
+}
+
+/* Native controls */
+
+.pro-input input,
+.pro-dropdown input,
+.pro-dropdown select,
+.pro-textarea textarea{
+
+    padding:
+
+        var(--input-padding-y)
+
+        var(--input-padding-x);
+
+    font-size:var(--font-md);
+
+    color:var(--text-primary);
+
+    background:transparent;
+
+    border:none;
+
+    outline:none;
+
+}
+
+
+/* ==========================================================
+   CHECKBOX
+   (previously widgets.py applied "pro-checkbox" but no rule
+   existed for it anywhere in the stylesheet — added here)
+   ========================================================== */
+
+.pro-checkbox{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:var(--space-2);
+
+}
+
+.pro-checkbox label{
+
+    font-size:var(--font-sm);
+
+    font-weight:var(--font-medium);
+
+    color:var(--text-primary);
+
+}
+
+.pro-checkbox input[type="checkbox"]{
+
+    width:18px;
+
+    height:18px;
+
+    accent-color:var(--primary);
+
+    cursor:pointer;
+
+}
+
+
+/* ==========================================================
+   BUTTONS
+   ========================================================== */
+
+.pro-btn{
+
+    border:none;
+
+    border-radius:var(--radius-md);
+
+    padding:
+
+        var(--button-padding-y)
+
+        var(--button-padding-x);
+
+    font-size:var(--font-md);
+
+    font-weight:var(--font-semibold);
+
+    cursor:pointer;
+
+    transition:
+
+        box-shadow var(--transition-fast),
+
+        opacity var(--transition-fast);
+
+}
+
+.pro-btn:hover{
+
+    transform:translateY(-1px);
+
+    box-shadow:var(--shadow-md);
+
+}
+
+.pro-btn:active{
+
+    transform:translateY(0);
+
+    box-shadow:var(--shadow-sm);
+
+}
+
+.pro-btn:disabled{
+
+    opacity:.55;
+
+    cursor:not-allowed;
+
+    transform:none;
+
+}
+
+.pro-btn-primary{
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            var(--primary-dark)
+        );
+
+    color:white;
+
+}
+
+.pro-btn-secondary{
+
+    background:white;
+
+    color:var(--text-primary);
+
+    border:1px solid var(--border);
+
+}
+
+.pro-btn-danger{
+
+    background:var(--danger);
+
+    color:white;
+
+}
+
+
+/* ==========================================================
+   FILE UPLOAD
+   ========================================================== */
+
+.pro-upload{
+
+    border:2px dashed var(--border);
+
+    border-radius:var(--radius-lg);
+
+    background:var(--surface);
+
+    padding:var(--upload-padding);
+
+    text-align:center;
+
+    transition:
+
+        border-color var(--transition-fast),
+
+        background var(--transition-fast);
+
+}
+
+.pro-upload:hover{
+
+    border-color:var(--primary);
+
+    background:var(--surface-hover);
+
+}
+
+.pro-upload label{
+
+    color:var(--text-secondary);
+
+    font-weight:var(--font-medium);
+
+}
+
+
+/* ==========================================================
+   TABLES
+   ========================================================== */
+
+.pro-table{
+
+    overflow:hidden;
+
+    border:1px solid var(--border);
+
+    border-radius:var(--radius-lg);
+
+    background:white;
+
+    box-shadow:var(--shadow-sm);
+
+}
+
+/* Header */
+
+.pro-table thead{
+
+    background:var(--surface);
+
+}
+
+.pro-table th{
+
+    padding:
+
+        var(--table-header-padding-y)
+
+        var(--table-header-padding-x);
+
+    font-size:var(--font-sm);
+
+    font-weight:var(--font-bold);
+
+    color:var(--text-primary);
+
+    border-bottom:1px solid var(--border);
+
+    text-align:left;
+
+}
+
+/* Rows */
+
+.pro-table td{
+
+    padding:
+
+        var(--table-cell-padding-y)
+
+        var(--table-cell-padding-x);
+
+    font-size:var(--font-md);
+
+    color:var(--text-secondary);
+
+    border-bottom:1px solid var(--border-light);
+
+}
+
+.pro-table tbody tr{
+
+    transition:
+
+        background var(--transition-fast);
+
+}
+
+.pro-table tbody tr:hover{
+
+    background:var(--surface-hover);
+
+}
+
+.pro-table tbody tr:last-child td{
+
+    border-bottom:none;
+
+}
+
+
+/* ==========================================================
+   OUTPUT PANELS
+   ========================================================== */
+
+.pro-output{
+
+    border:1px solid var(--border);
+
+    border-radius:var(--radius-lg);
+
+    background:white;
+
+    padding:var(--card-padding);
+
+    box-shadow:var(--shadow-sm);
+
+}
+
+.pro-output textarea{
+
+    font-family:
+
+        "Consolas",
+        "JetBrains Mono",
+        monospace;
+
+    font-size:13px;
+
+    line-height:1.55;
+
+}
+
+
+/* ==========================================================
+   BADGES
+   ========================================================== */
+
+.badge{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:6px;
+
+    padding:
+
+        4px
+
+        10px;
+
+    border-radius:var(--radius-pill);
+
+    font-size:12px;
+
+    font-weight:var(--font-semibold);
+
+}
+
+.badge-success{
+
+    color:#065f46;
+
+    background:#d1fae5;
+
+}
+
+.badge-warning{
+
+    color:#92400e;
+
+    background:#fef3c7;
+
+}
+
+.badge-danger{
+
+    color:#991b1b;
+
+    background:#fee2e2;
+
+}
+
+.badge-info{
+
+    color:#075985;
+
+    background:#e0f2fe;
+
+}
+
+
+/* ==========================================================
+   FOOTER
+   ========================================================== */
+
+.app-footer{
+
+    margin-top:var(--space-7);
+
+    padding:var(--space-5);
+
+    text-align:center;
+
+    border-top:1px solid var(--border-light);
+
+    color:var(--text-secondary);
+
+    font-size:var(--font-sm);
+
+}
+
+.footer-brand {
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.footer-title{
+
+    font-weight:var(--font-semibold);
+
+    color:var(--text-primary);
+
+}
+
+.footer-subtitle{
+
+    margin-top:4px;
+
+    color:var(--text-muted);
+
+}
+
+
+/* ==========================================================
+   LOADING STATES
+   ========================================================== */
+
+.loading{
+
+    pointer-events:none;
+
+    opacity:.70;
+
+}
+
+.loading::after{
+
+    content:"";
+
+    width:18px;
+
+    height:18px;
+
+    margin-left:8px;
+
+    display:inline-block;
+
+    border:
+
+        2px solid rgba(255,255,255,.40);
+
+    border-top-color:white;
+
+    border-radius:50%;
+
+    animation:spin .8s linear infinite;
+
+}
+
+@keyframes spin{
+
+    from{
+
+        transform:rotate(0deg);
+
+    }
+
+    to{
+
+        transform:rotate(360deg);
+
+    }
+
+}
+
+
+/* ==========================================================
+   FADE ANIMATIONS
+   ========================================================== */
+
+.fade-in{
+
+    animation:
+
+        fadeIn
+
+        .35s ease;
+
+}
+
+@keyframes fadeIn{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(6px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:none;
+
+    }
+
+}
+
+
+/* ==========================================================
+   CARD ENTRANCE
+   ========================================================== */
+
+@keyframes cardAppear{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(8px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:none;
+
+    }
+
+}
+
+
+/* ==========================================================
+   FOCUS ACCESSIBILITY
+   ========================================================== */
+
+:focus-visible{
+
+    outline:2px solid var(--primary);
+
+    outline-offset:2px;
+
+}
+
+
+/* ==========================================================
+   RESPONSIVE
+   ========================================================== */
+
+@media (max-width:1400px){
+
+    .gradio-container{
+
+        padding-right:var(--container-padding);
+
+    }
+
+}
+
+
+@media (max-width:992px){
+
+    .app-header{
+
+        padding:var(--space-5);
+
+    }
+
+    .header-content{
+
+        flex-direction:column;
+
+        text-align:center;
+
+    }
+
+    .header-brand{
+
+        justify-content:center;
+
+    }
+
+    .header-center{
+
+        text-align:center;
+
+    }
+
+}
+
+
+@media (max-width:768px){
+
+    .gradio-container{
+
+        padding:var(--space-4);
+
+    }
+
+    .section-header{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+    }
+
+    .section-icon{
+
+        margin-bottom:var(--space-2);
+
+    }
+
+    .pro-btn{
+
+        width:100%;
+
+    }
+
+    .header-logo{
+
+    width:72px;
+
+    height:72px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    flex-shrink:0;
+
+    border-radius:var(--radius-md);
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            var(--primary-dark)
+        );
+
+    color:white;
+
+    font-size:24px;
+
+    border:2px solid rgba(255,255,255,.10);
+
+    box-shadow:
+        0 10px 20px rgba(5,150,105,.30);
+
+    overflow: hidden;
+
+}
+
+.header-logo img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: contain;
+
+    border-radius: inherit;
+
+}
+
+.header-brand-text {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 4px;
+
+}
+
+.header-app-name {
+
+    color: var(--text-muted);
+
+    font-size: var(--font-md);
+
+    font-weight: var(--font-semibold);
+
+    letter-spacing: -.01em;
+
+}
+
+    .header-center-title{
+
+        font-size:22px;
+
+    }
+
+}
+
+
+@media (max-width:576px){
+
+    .section-card{
+
+        border-radius:var(--radius-md);
+
+    }
+
+    .section-body{
+
+        padding:var(--space-4);
+
+    }
+
+    .section-header{
+
+        padding:var(--space-4);
+
+    }
+
+}
+
+
+/* ==========================================================
+   PRINT
+   ========================================================== */
+
+@media print{
+
+    body{
+
+        background:white;
+
+    }
+
+    .app-header{
+
+        box-shadow:none;
+
+    }
+
+    .section-card{
+
+        box-shadow:none;
+
+        break-inside:avoid;
+
+    }
+
+}
+
+
+/* ==========================================================
+   FINAL UTILITIES
+   ========================================================== */
+
+.rounded-sm{
+
+    border-radius:var(--radius-sm);
+
+}
+
+.rounded-md{
+
+    border-radius:var(--radius-md);
+
+}
+
+.rounded-lg{
+
+    border-radius:var(--radius-lg);
+
+}
+
+.shadow-sm{
+
+    box-shadow:var(--shadow-sm);
+
+}
+
+.shadow-md{
+
+    box-shadow:var(--shadow-md);
+
+}
+
+.shadow-lg{
+
+    box-shadow:var(--shadow-lg);
+
+}
+
+.border{
+
+    border:1px solid var(--border);
+
+}
+
+.bg-white{
+
+    background:white;
+
+}
+
+.bg-surface{
+
+    background:var(--surface);
+
+}
+
+
+/* ==========================================================
+   SCREEN HOST
+   ========================================================== */
+
+.screen-host {
+
+    width:100% !important;
+
+    min-height:0 !important;
+
+    margin:0 !important;
+
+    padding:0 !important;
+
+    display:block !important;
+
+}
+
+
+/* ==========================================================
+   SCREEN BASE
+   ========================================================== */
+
+.screen {
+
+    width:100% !important;
+
+    margin:0 !important;
+
+    padding:0 !important;
+
+    border:none !important;
+
+    box-shadow:none !important;
+
+    background:transparent !important;
+
+    box-sizing:border-box;
+
+}
+
+
+/* ==========================================================
+   AUTHENTICATION SCREEN
+
+   NOTE (fix): `.authentication-screen` itself carries no
+   `display` or `min-height` — it's the exact element whose
+   `visible` prop Gradio toggles on login. Declaring sizing
+   directly on that node risks winning a cascade fight against
+   whatever mechanism Gradio uses to hide it, which is what
+   caused an empty ~100vh box to stay pinned open above the
+   dashboard after login. All sizing instead lives on
+   `.authentication-wrapper`, a plain child column one level
+   inside (see authentication.py) — nothing on the toggled
+   node competes with Gradio's hide logic, so when it
+   collapses, the wrapper (and everything in it) goes with it.
+   ========================================================== */
+
+.authentication-wrapper {
+    display: flex;
+    min-height: calc(100vh - 40px);
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+/* ==========================================================
+   DASHBOARD SCREEN
+   ========================================================== */
+
+.dashboard-screen {
+
+    width:100% !important;
+
+    min-height:0 !important;
+
+    height:auto !important;
+
+    margin:0 !important;
+
+    padding:0 !important;
+
+    box-sizing:border-box;
+
+}
+
+
+/* ==========================================================
+   AUTHENTICATION CONTENT
+   ========================================================== */
+
+.authentication-content {
+    width: min(460px, calc(100vw - 48px)) !important;
+
+    max-width: 460px !important;
+
+    margin: 0 auto !important;
+
+    display: flex !important;
+
+    flex-direction: column !important;
+
+    align-items: stretch !important;
+
+    box-sizing: border-box !important;
+}
+
+
+/* ==========================================================
+   AUTHENTICATION BRAND
+   ========================================================== */
+
+.authentication-brand {
+
+    width: 100%;
+
+    text-align: center;
+
+    margin-bottom: var(--space-6);
+}
+
+
+
+.authentication-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: var(--space-5);
+}
+
+.authentication-logo img {
+    width: 100% !important;
+    max-width: 380px !important;
+    height: auto !important;
+    object-fit: contain;
+}
+
+
+.authentication-logo img {
+
+    width: 82px;
+
+    height: 82px;
+
+    object-fit: contain;
+}
+
+
+.authentication-title {
+
+    font-size: 28px;
+
+    line-height: 1.2;
+
+    font-weight: var(--font-bold);
+
+    color: var(--text-primary);
+
+    letter-spacing: -0.02em;
+}
+
+
+.authentication-subtitle {
+
+    margin-top: var(--space-2);
+
+    color: var(--text-secondary);
+
+    font-size: var(--font-md);
+
+    line-height: 1.5;
+}
+
+
+/* ==========================================================
+   AUTHENTICATION CARD
+   ========================================================== */
+
+.authentication-card {
+
+    width: 100% !important;
+
+    padding: var(--space-7) !important;
+
+    margin: 0 !important;
+
+    border: 1px solid var(--border) !important;
+
+    border-radius: var(--radius-xl) !important;
+
+    background: white !important;
+
+    box-shadow: var(--shadow-lg) !important;
+
+    box-sizing: border-box !important;
+
+    overflow: hidden;
+}
+
+
+/* Remove Gradio container styling inside card */
+
+.authentication-card > .block {
+
+    background: transparent !important;
+
+    border: none !important;
+
+    box-shadow: none !important;
+
+    padding: 0 !important;
+}
+
+
+.authentication-card .form {
+
+    background: transparent !important;
+}
+
+
+/* ==========================================================
+   AUTHENTICATION CARD HEADER
+   ========================================================== */
+
+.authentication-card-header {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: var(--space-3);
+
+    margin-bottom: var(--space-6);
+}
+
+
+.authentication-card-icon {
+
+    width: 42px;
+
+    height: 42px;
+
+    flex: 0 0 42px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: var(--radius-md);
+
+    background: var(--primary-50);
+
+    color: var(--primary-700);
+
+    font-size: 20px;
+}
+
+
+.authentication-card-title {
+
+    font-size: 17px;
+
+    font-weight: var(--font-semibold);
+
+    color: var(--text-primary);
+}
+
+
+.authentication-card-description {
+
+    margin-top: 3px;
+
+    color: var(--text-muted);
+
+    font-size: var(--font-sm);
+}
+
+
+/* ==========================================================
+   AUTHENTICATION INPUTS
+   ========================================================== */
+
+.authentication-input {
+
+    width: 100% !important;
+
+    margin-bottom: var(--space-4);
+}
+
+
+.authentication-input input {
+
+    width: 100% !important;
+}
+
+
+/* ==========================================================
+   REMEMBER ME
+   ========================================================== */
+
+.authentication-remember {
+
+    width: 100%;
+
+    margin:
+        var(--space-1)
+        0
+        var(--space-5);
+}
+
+
+/* ==========================================================
+   LOGIN BUTTON
+   ========================================================== */
+
+.authentication-login-button {
+
+    width: 100% !important;
+
+    min-height: 46px;
+
+    margin-top: var(--space-2);
+
+    font-size: var(--font-md);
+
+    font-weight: var(--font-semibold);
+}
+
+
+/* ==========================================================
+   AUTHENTICATION STATUS
+   ========================================================== */
+
+.authentication-status {
+
+    width: 100%;
+
+    min-height: 0;
+
+    margin-top: var(--space-4);
+
+    padding: 0;
+
+    background: transparent !important;
+
+    border: none !important;
+
+    box-shadow: none !important;
+}
+
+
+/* ==========================================================
+   PROCESSING PANEL
+   ========================================================== */
+
+.authentication-processing {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 6px;
+
+    padding: var(--space-4);
+
+    border-radius: var(--radius-md);
+
+    background: #f0fdf4;
+
+    border: 1px solid #bbf7d0;
+
+    text-align: center;
+}
+
+
+.authentication-processing-icon {
+
+    width: 32px;
+
+    height: 32px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 18px;
+}
+
+
+.authentication-processing-title {
+
+    font-size: var(--font-md);
+
+    font-weight: var(--font-semibold);
+
+    color: var(--primary-dark);
+}
+
+
+.authentication-processing-text {
+
+    font-size: var(--font-sm);
+
+    color: var(--text-secondary);
+
+    line-height: 1.4;
+}
+
+
+/* ==========================================================
+   SUCCESS
+   ========================================================== */
+
+.authentication-success {
+
+    padding: var(--space-3);
+
+    border-radius: var(--radius-md);
+
+    background: #f0fdf4;
+
+    border: 1px solid #bbf7d0;
+
+    color: #047857;
+
+    text-align: center;
+
+    font-size: var(--font-sm);
+
+    font-weight: var(--font-medium);
+}
+
+
+/* ==========================================================
+   ERROR
+   ========================================================== */
+
+.authentication-error {
+
+    padding: var(--space-3);
+
+    border-radius: var(--radius-md);
+
+    background: #fef2f2;
+
+    border: 1px solid #fecaca;
+
+    color: #b91c1c;
+
+    text-align: center;
+
+    font-size: var(--font-sm);
+}
+
+
+
+/* ==========================================================
+   AUTHENTICATION RESPONSIVE
+   ========================================================== */
+
+@media (max-width: 576px) {
+
+    .authentication-screen {
+
+        padding:
+            var(--space-6)
+            var(--space-4);
+
+    }
+
+    .authentication-content {
+
+        max-width: 100%;
+
+    }
+
+    .authentication-card {
+
+        padding: var(--space-5);
+
+        border-radius: var(--radius-lg);
+
+    }
+
+    .authentication-title {
+
+        font-size: 24px;
+
+    }
+
+}
+
+
+/* ==========================================================
+   HIDE DEFAULT GRADIO FOOTER
+   ========================================================== */
+
+footer {
+    display: none !important;
+}
+/* ==========================================================
+   SECTION CARD - REMOVE GRADIO GROUP DEFAULT SPACING
+   ========================================================== */
+
+/*
+   Gradio's Group inherits the generic .block spacing.
+   The section-card owns its own border, radius and spacing,
+   so the Group itself must have zero internal padding.
+*/
+
+.section-card {
+    padding: 0 !important;
+    margin: 0 !important;
+    gap: 0 !important;
+}
+
+
+/*
+   Explicitly override Gradio's generic block styling.
+*/
+
+.section-card.block {
+    padding: 0 !important;
+    margin: 0 !important;
+    gap: 0 !important;
+}
+
+
+/*
+   The HTML component containing the custom header
+   must also have no surrounding spacing.
+*/
+
+.section-card > .block {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+
+/*
+   Header itself sits flush with the card.
+*/
+
+.section-card .section-header {
+    margin: 0 !important;
+    padding: 20px 24px !important;
+}
+
+
+/*
+   Keep the card's rounded corners visible.
+*/
+
+.section-card {
+    overflow: hidden !important;
+}
+/* ==========================================================
+   END OF THEME
+   ========================================================== */
+
+/* ==========================================================
+   CARD HEADER REDESIGN
+   Bigger gradient icon, dark title, decorative dot-grid +
+   soft blob in the corner (see the reference mockup).
+   ========================================================== */
+
+.section-header {
+
+    position: relative;
+
+    overflow: hidden;
+
+    gap: 20px;
+
+    min-height: 108px;
+
+    padding: 28px 32px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #eafcf3 0%,
+            #f3fbf7 55%,
+            #eafcf5 100%
+        );
+
+    border-bottom: 1px solid #dcefe6;
+
+}
+
+/* Soft decorative blob, top-right */
+
+.section-decor {
+
+    position: absolute;
+
+    top: -60px;
+
+    right: -60px;
+
+    width: 240px;
+
+    height: 240px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(16,185,129,.14),
+            transparent 70%
+        );
+
+    pointer-events: none;
+
+}
+
+/* Decorative dot grid, top-right */
+
+.section-header::after {
+
+    content: "";
+
+    position: absolute;
+
+    top: 18px;
+
+    right: 28px;
+
+    width: 130px;
+
+    height: 84px;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(5,150,105,.20) 1.4px,
+            transparent 1.4px
+        );
+
+    background-size: 14px 14px;
+
+    pointer-events: none;
+
+}
+
+/* Keep icon + heading above the decorative layers */
+
+.section-icon,
+.section-heading {
+
+    position: relative;
+
+    z-index: 1;
+
+}
+
+.section-icon {
+
+    width: 64px;
+
+    height: 64px;
+
+    flex: 0 0 64px;
+
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            var(--primary-dark)
+        );
+
+    color: white;
+
+    font-size: 28px;
+
+    border: none;
+
+    box-shadow:
+        0 10px 22px
+        rgba(5,150,105,.30);
+
+}
+
+.section-title {
+
+    font-size: 21px;
+
+    font-weight: 800;
+
+    color: #0f172a;
+
+    letter-spacing: -0.02em;
+
+}
+
+.section-description {
+
+    font-size: 14px;
+
+    color: var(--text-secondary);
+
+}
+
+
+/* ==========================================================
+   FIELD HEADER
+   Small icon + title + description block placed above an
+   individual input inside a card body (Select Course, Status).
+   ========================================================== */
+
+.field-group {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: var(--space-3);
+
+    width: 100%;
+
+}
+
+/* Divider between stacked fields inside the same card */
+
+.field-group + .field-group {
+
+    margin-top: var(--space-5);
+
+    padding-top: var(--space-5);
+
+    border-top: 1px solid var(--border-light);
+
+}
+
+.field-header {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+
+    width: 100%;
+
+}
+
+.field-icon {
+
+    width: 44px;
+
+    height: 44px;
+
+    flex: 0 0 44px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 12px;
+
+    background: var(--primary-50);
+
+    color: var(--primary);
+
+    font-size: 19px;
+
+    line-height: 1;
+
+}
+
+.field-heading {
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    gap: 2px;
+
+    min-width: 0;
+
+}
+
+.field-title {
+
+    font-size: 15px;
+
+    font-weight: 700;
+
+    color: var(--primary-dark);
+
+    line-height: 1.3;
+
+}
+
+.field-description {
+
+    font-size: 13px;
+
+    color: var(--text-secondary);
+
+    line-height: 1.4;
+
+}
+
+/* field_group() renders its own HTML header, so hide the
+   native Gradio label on whatever input sits inside it —
+   the field-header already carries the title. */
+
+.field-group .pro-input label,
+.field-group .pro-dropdown label,
+.field-group .pro-output label,
+.field-group .pro-textarea label {
+
+    display: none !important;
+
+}
+
+
+/* ==========================================================
+   INPUT BORDER — always-visible soft green ring
+   (previously only appeared on hover/focus)
+   ========================================================== */
+
+/* Gradio auto-wraps sibling "form" components (Dropdown,
+   Textbox, Checkbox, etc.) inside a shared .form panel that
+   carries the theme's default grey background and padding.
+   That wrapper sits OUTSIDE the component we style above, so
+   none of the .pro-dropdown / .pro-input rules ever reach it.
+
+   The rule below used to only flatten this wrapper inside
+   `.field-group`. But most fields in the dashboard (Semester
+   Start/End Date, Holidays, etc.) are plain app_textbox() /
+   app_dropdown() calls inside section_body() — never wrapped
+   in field_group() — so that scoped rule never reached them,
+   which is why the grey box was still showing behind them.
+   Flattening it everywhere inside .section-body (every card
+   body in the dashboard) fixes that without touching anything
+   outside the dashboard cards, e.g. the login screen, which
+   already has its own `.authentication-card .form` rule. */
+
+.field-group .form,
+.field-group [class*="form"],
+.section-body .form,
+.section-body [class*="form"] {
+
+    background: transparent !important;
+
+    border: none !important;
+
+    box-shadow: none !important;
+
+    padding: 0 !important;
+
+    border-radius: 0 !important;
+
+}
+
+/* Only zero the internal gap inside .field-group specifically
+   — it wraps a single field, so no sibling spacing is needed
+   there. Rows of multiple fields directly inside .section-body
+   (e.g. Start Date / End Date side by side) still need their
+   own gap, so that one is left alone. */
+
+.field-group .form,
+.field-group [class*="form"] {
+
+    gap: 0 !important;
+
+}
+
+.pro-input,
+.pro-dropdown,
+.pro-textarea {
+
+    background: transparent !important;
+
+    border: none !important;
+
+    border-radius: var(--radius-md) !important;
+
+    box-shadow: none !important;
+
+}
+
+.pro-input input,
+.pro-dropdown input,
+.pro-dropdown select,
+.pro-dropdown ul,
+.pro-textarea textarea {
+
+    background: white !important;
+
+    border: 1px solid rgba(5,150,105,.28) !important;
+
+    border-radius: var(--radius-md) !important;
+
+}
+
+.pro-input input:hover,
+.pro-dropdown input:hover,
+.pro-dropdown select:hover,
+.pro-textarea textarea:hover {
+
+    border-color: rgba(5,150,105,.45) !important;
+
+}
+
+.pro-input input:focus,
+.pro-dropdown input:focus,
+.pro-dropdown select:focus,
+.pro-textarea textarea:focus {
+
+    border-color: var(--primary-dark) !important;
+
+    outline: none !important;
+
+}
+
+/* Gradio wraps the dropdown's actual combobox in its own
+   intermediate div (commonly a `.wrap` container) between the
+   outer block we style above and the input itself. That layer
+   still carried the theme's default grey border/background,
+   which is what showed up as a second, nested box. Flatten it. */
+
+.pro-dropdown > div,
+.pro-dropdown > div > div,
+.pro-input > div,
+.pro-input > div > div {
+
+    background: transparent !important;
+
+    border: none !important;
+
+    border-radius: inherit !important;
+
+    box-shadow: none !important;
+
+}
+
+/* Dropdown's open options panel — same white/green treatment
+   instead of the theme's default grey, so it reads as part of
+   the same control rather than a separate floating menu. */
+
+.pro-dropdown ul,
+.pro-dropdown ul li,
+.pro-dropdown [class*="options"] {
+
+    background: white !important;
+
+}
+
+.pro-dropdown [class*="options"] {
+
+    border: 1px solid rgba(5,150,105,.22) !important;
+
+    border-radius: var(--radius-md) !important;
+
+}
+
+
+/* ==========================================================
+   STATUS BADGE
+   Turns a plain output_box into a rounded pill with a
+   pulsing dot, e.g. "🟢 Ready".
+   ========================================================== */
+
+.status-badge.pro-output {
+
+    background: transparent;
+
+    border: none;
+
+    box-shadow: none;
+
+    padding: 0;
+
+    position: relative;
+
+}
+
+.status-badge textarea {
+
+    background: var(--primary-50) !important;
+
+    border: none !important;
+
+    border-radius: var(--radius-pill) !important;
+
+    padding: 14px 20px 14px 42px !important;
+
+    color: var(--primary-dark) !important;
+
+    font-weight: 700 !important;
+
+    font-family: var(--font-family) !important;
+
+}
+
+.status-badge textarea::placeholder {
+
+    color: var(--primary-dark) !important;
+
+    opacity: 0.7 !important;
+
+}
+
+.status-badge::before {
+
+    content: "";
+
+    position: absolute;
+
+    left: 20px;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    width: 10px;
+
+    height: 10px;
+
+    border-radius: 50%;
+
+    background: var(--success);
+
+    box-shadow: 0 0 8px var(--success);
+
+    z-index: 2;
+
+    animation: statusPulse 2s infinite;
+
+}
+
+/* ==========================================================
+   END REDESIGN BLOCK
+   ========================================================== */
